@@ -30,5 +30,17 @@ struct node{
 
 
 int between_days(struct node *date1head, struct node *date2head){
-	return -1;
+	if(date1head == NULL || date2head == NULL)
+		return -1;
+	int d1 = 0, d2 = 0, m1 = 0, m2 = 0, y1 = 0, y2 = 0;
+	d1 = date1head->data * 10 + date1head->next->data;
+	d2 = date2head->data * 10 + date2head->next->data;
+	date1head = date1head->next->next;
+	date2head = date2head->next->next;
+	m1 = date1head->data * 10 + date1head->next->data;
+	m2 = date2head->data * 10 + date2head->next->data;
+	date1head = date1head->next->next;
+	date2head = date2head->next->next;
+	d1 = date1head->data * 1000 + date1head->next->data * 100 + date1head->next->next->data * 10 + date1head->next->next->next->data;
+	d2 = date2head->data * 1000 + date2head->next->data * 100 + date2head->next->next->data * 10 + date2head->next->next->next->data;
 }
