@@ -28,6 +28,17 @@ struct node{
 	struct node *next;
 };
 
+int areConsecutive(int d1, int m1, int y1, int d2, int m2, int y2)
+{
+	return 0;
+}
+
+int countLeapYears(int d,int m,int y)
+{
+	if (m <= 2)
+		y--;
+	return y / 4 - y / 100 + y / 400;
+}
 
 int between_days(struct node *date1head, struct node *date2head){
 	if(date1head == NULL || date2head == NULL)
@@ -43,4 +54,18 @@ int between_days(struct node *date1head, struct node *date2head){
 	date2head = date2head->next->next;
 	d1 = date1head->data * 1000 + date1head->next->data * 100 + date1head->next->next->data * 10 + date1head->next->next->next->data;
 	d2 = date2head->data * 1000 + date2head->next->data * 100 + date2head->next->next->data * 10 + date2head->next->next->next->data;
+	if (((d1 == d2) && (m1 == m2) && (y1 == y2)))
+	{
+		return 0;
+	}
+	int month_days[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+	long int n1 = y1 * 365 + d1;
+	for (int i = 0; i<m1 - 1; i++)
+		n1 += month_days[i];
+	n1 += countLeapYears(d1,m1,y1);
+	long int n2 = y2 * 365 + d2;
+	for (int i = 0; i<m2 - 1; i++)
+		n2 += month_days[i];
+	n2 += countLeapYears(d2,m2,y2);
+	return (n2 - n1);
 }
