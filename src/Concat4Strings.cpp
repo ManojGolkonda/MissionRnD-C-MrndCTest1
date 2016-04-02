@@ -31,4 +31,12 @@ char * concat_4strings(char *s1, char *s2, char *s3, char *s4){
 	//Return the new string created.
 	if (s1[0] == s2[0] && s2[0] == s3[0] && s3[0] == s4[0])
 		return s1;
+	char *result = s1;
+	if (strlen(s2) > strlen(result))
+		result = s2;
+	if (strlen(s3) > strlen(result))
+		result = s3;
+	if (strlen(s4) > strlen(result))
+		result = s4;
+	return result;
 }
