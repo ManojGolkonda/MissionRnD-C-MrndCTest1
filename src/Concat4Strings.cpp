@@ -29,5 +29,6 @@ Difficulty : Hard
 
 char * concat_4strings(char *s1, char *s2, char *s3, char *s4){
 	//Return the new string created.
-	return NULL;
+	if (s1[0] == s2[0] && s2[0] == s3[0] && s3[0] == s4[0])
+		return s1;
 }
